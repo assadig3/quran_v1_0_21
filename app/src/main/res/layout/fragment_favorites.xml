@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- عنوان آخر المتصفحات -->
+    <TextView
+        android:id="@+id/titleRecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🕓 آخر الصفحات التي زرتها"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#7C4DFF"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="18dp" />
+
+    <!-- قائمة آخر المتصفحات -->
+    <LinearLayout
+        android:id="@+id/recentPagesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <!-- Divider (خط فاصل واضح) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="#E1BEE7" />
+
+    <!-- عنوان المفضلات -->
+    <TextView
+        android:id="@+id/titleFavorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⭐ الصفحات المفضلة"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#FFC107"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- قائمة المفضلات -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+</LinearLayout>

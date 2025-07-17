@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="7dp"
+    android:layout_marginHorizontal="14dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    card_view:cardCornerRadius="18dp"
+    card_view:cardElevation="3dp"
+    card_view:cardBackgroundColor="@color/cardBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp">
+
+        <!-- رقم السورة داخل دائرة -->
+        <TextView
+            android:id="@+id/surahNumber"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:text="١"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_juz_circle"
+            android:layout_marginEnd="12dp" />
+
+        <!-- اسم السورة -->
+        <TextView
+            android:id="@+id/surahTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="الفاتحة (مكية • 7 آيات)"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- أيقونة النجمة (اختياري) -->
+        <ImageView
+            android:id="@+id/favIcon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_star_outline"
+            android:layout_marginStart="8dp"
+            android:contentDescription="مفضلة" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
