@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- باقي عناصر القائمة -->
+    <item
+        android:id="@+id/action_jump_to_juz"
+        android:title="انتقال إلى جزء"
+        android:icon="@drawable/ic_jump"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_jump"
+        android:title="انتقال إلى سورة"
+        android:icon="@drawable/ic_jump"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_toggle_repeat"
+        android:title="تكرار"
+        android:icon="@drawable/ic_repeat"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_select_tafsir"
+        android:title="اختيار التفسير"
+        android:icon="@drawable/ic_tafsir"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_download_tafsir"
+        android:title="تحميل التفسير"
+        android:icon="@drawable/ic_download"
+        app:showAsAction="ifRoom" />
+
+</menu>

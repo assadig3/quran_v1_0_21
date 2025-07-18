@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <!-- ✅ شريط الأدوات العلوي (يجب إضافته حتى لا يحدث خطأ ID في Kotlin) -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <!-- ✅ مكان الفراجمنت (مطلوب لـ .replace(R.id.quran_container, ...)) -->
+    <FrameLayout
+        android:id="@+id/quran_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- بقية العناصر كما هي، وضعتها هنا لكي تكون داخل الفراجمنت لاحقاً، أو أبقِها حسب الحاجة -->
+
+        <!-- شريط علوي (Top Info/Bookmark) -->
+        <RelativeLayout
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:alpha="0"
+            android:elevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:id="@+id/topBarContainer">
+            <ImageButton
+                android:src="@drawable/ic_star_border"
+                android:contentDescription="إشارة مرجعية"
+                android:background="@drawable/bg_audio_bar"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:tint="@color/accent"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="8dp"
+                android:id="@+id/bookmarkBtn"
+                tools:ignore="HardcodedText,UseAppTint" />
+            <TextView
+                android:layout_centerInParent="true"
+                android:elevation="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:textSize="16sp"
+                android:textColor="#143D2A"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:gravity="center"
+                android:background="@drawable/bg_page_info"
+                android:paddingBottom="5dp"
+                android:id="@+id/pageInfoText"
+                android:paddingTop="5dp"
+                android:text="سورة - الجزء - الصفحة"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+        </RelativeLayout>
+
+        <!-- عرض صفحات المصحف -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/pageViewPager" />
+
+        <!-- آية بارزة (تظهر/تختفي حسب الحاجة) -->
+        <TextView
+            android:visibility="gone"
+            android:paddingRight="22dp"
+            android:elevation="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="@color/primaryText"
+            android:lineSpacingExtra="6dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_ayah_overlay"
+            android:gravity="center"
+            android:shadowRadius="14"
+            android:paddingBottom="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="22dp"
+            android:shadowColor="#80000000"
+            android:shadowDx="0"
+            android:shadowDy="6"
+            android:maxLines="5"
+            android:id="@+id/currentAyahText"
+            android:paddingTop="15dp"
+            android:text="مثال آية مع التشكيل"
+            android:textStyle="bold" />
+
+        <!-- حالة الصوت (Audio Status) -->
+        <TextView
+            android:visibility="gone"
+            android:layout_marginEnd="12dp"
+            android:elevation="8dp"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:paddingStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="top|end"
+            android:paddingEnd="16dp"
+            android:background="@drawable/bg_audio_status"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:id="@+id/audioStatus"
+            android:text="..."
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <!-- هيدر مخصص (للتطوير لاحقًا) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/headerContainer"
+            tools:ignore="Orientation" />
+
+        <!-- RecyclerView للآيات (تفسير/بحث) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:background="@android:color/white"
+            android:elevation="14dp"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/ayahsRecyclerView"
+            android:layout_gravity="bottom" />
+
+        <!-- زر إغلاق التفسير (يظهر عند الحاجة) -->
+        <ImageButton
+            android:layout_marginBottom="310dp"
+            android:visibility="gone"
+            android:layout_marginEnd="18dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="إغلاق التفسير"
+            android:background="@drawable/bg_audio_bar"
+            android:elevation="16dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:tint="@color/accent"
+            android:id="@+id/closeTafsirBtn"
+            android:layout_gravity="bottom|end"
+            tools:ignore="HardcodedText,UseAppTint" />
+
+    </FrameLayout>
+
+    <!-- شريط التلاوة في الأسفل دائمًا -->
+    <!-- شريط التلاوة في الأسفل دائمًا مع دعم لشريط تنقل الجهاز -->
+    <LinearLayout
+        android:id="@+id/audioControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/bg_audio_bar"
+        android:gravity="center_vertical"
+        android:layout_gravity="bottom"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layoutDirection="rtl"
+        android:fitsSystemWindows="true">
+
+        <ImageButton
+            android:id="@+id/btnPlayPause"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_audio_bar"
+            android:contentDescription="تشغيل"
+            android:elevation="6dp"
+            android:src="@android:drawable/ic_media_play"
+            android:tint="@android:color/white" />
+
+        <Space
+            android:layout_width="6dp"
+            android:layout_height="1dp" />
+
+        <Button
+            android:id="@+id/btnQari"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="2"
+            android:background="@drawable/bg_audio_bar"
+            android:elevation="6dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="فارس عباد"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="6dp"
+            android:layout_height="1dp" />
+
+        <ImageButton
+            android:id="@+id/audio_download"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_audio_bar"
+            android:contentDescription="تحميل"
+            android:elevation="6dp"
+            android:src="@drawable/ic_download"
+            android:tint="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>
